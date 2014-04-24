@@ -59,7 +59,7 @@ public class FileCopy {
     }
 
     // Java 7
-    public static void copyFile() throws IOException {
+    public void copyFile() throws IOException {
 
         long start = System.currentTimeMillis();
 
@@ -74,7 +74,7 @@ public class FileCopy {
                 FileChannel in = new FileInputStream(source).getChannel();
                 FileChannel out = new FileOutputStream(target).getChannel()) {
 
-            // target.transferFrom(source, 0, source.s.size());
+            out.transferFrom(in, 0, in.size());
         }
         
         long stop = System.currentTimeMillis();
@@ -83,7 +83,7 @@ public class FileCopy {
     }
 
     // Java 7 - just as fast as NIO from 1.4, 65 ms
-    public static void copyFileFiles() throws IOException {
+    public void copyFileFiles() throws IOException {
         
         long start = System.currentTimeMillis();
         
@@ -100,7 +100,7 @@ public class FileCopy {
 
     public static void main(String[] args) throws Exception {
         
-        new FileCopy().copyFileFiles();
+        new FileCopy().copyFile();
                 
     }
 }
