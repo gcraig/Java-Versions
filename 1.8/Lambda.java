@@ -68,15 +68,22 @@ public class Lambda {
 		void sayHello(String s);
 	}
 
+	interface HelloWorld2 {
+		void sayHello();
+	}
+
 	static HelloWorld hw = (s) -> { 
 		System.out.println("Hello " + s);
 		System.out.println("Processing orders ...");
 	};
 
-	static HelloWorld hs = (s) -> {
+	static HelloWorld hs = s -> { //parens can be omitted for single args
 		System.out.println("I said yo sucka! " + s);
 		System.out.println("Processing invoices ...");
 	};
+
+	//Empty parens for anonymous
+	static HelloWorld2 hh = () -> System.out.println("I said Hello!");
 	
 	public static void main(String[] args) {
 
@@ -95,6 +102,7 @@ public class Lambda {
 		//of the same interface, resulting in different behavior
 		hw.sayHello("George");
 		hs.sayHello("Tim");
+		hh.sayHello();
 
 	}
 }
