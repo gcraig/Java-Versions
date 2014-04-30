@@ -5,10 +5,13 @@ import java.time.Instant;
 
 public class Lambda {
 
+	int i;
+
 	void runThreads() {
 
 		Runnable run = new Runnable() {
 		    public void run() {
+		    	System.out.printf("Thread %d ......", ++i);
 		        try {
 		            for (int i = 0; i < 5; i++) {
 		                Thread.sleep(1000);
@@ -30,6 +33,7 @@ public class Lambda {
 
 		Runnable run = () -> {
 	        try {
+	        	System.out.printf("Thread %d ......", ++i);
 	            for (int i = 0; i < 5; i++) {
 	                Thread.sleep(1000);
 	                System.out.print(i + "\n" + "..");
@@ -46,7 +50,9 @@ public class Lambda {
 	}
 
 	void runLambdaThreads2() {
-		new Thread(() -> System.out.println("Running thread ...")).start();
+		new Thread(() -> {
+			System.out.printf("Thread %d ......", ++i);
+			System.out.println("Running thread ...");}).start();
 	}
 
 	void printLambdaList() {
