@@ -1,6 +1,7 @@
 
 import java.util.List;
 import java.util.Arrays;
+import java.time.Instant;
 
 public class Lambda {
 
@@ -91,6 +92,9 @@ public class Lambda {
 	static HelloWorld2 hh = () -> System.out.println("I *said* Hello!");
 	
 	public static void main(String[] args) {
+
+
+		System.out.println(Instant.now());
 
 		Lambda l = new Lambda();
 		// l.runThreads();
