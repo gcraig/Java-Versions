@@ -72,10 +72,15 @@ public class Lambda {
 		void sayHello();
 	}
 
-	static HelloWorld hw = (s) -> { 
+	interface HelloWorld3 {
+		void sayHello(String s, String o);
+	}
+
+	static HelloWorld3 hw = (s, o) -> { 
 		System.out.println("Hello " + s);
-		System.out.println("Processing orders ...");
+		System.out.printf("Processing %s\n", o);
 	};
+
 
 	static HelloWorld hs = s -> { //parens can be omitted for single args
 		System.out.println("I said yo sucka! " + s);
@@ -83,7 +88,7 @@ public class Lambda {
 	};
 
 	//Empty parens for anonymous
-	static HelloWorld2 hh = () -> System.out.println("I said Hello!");
+	static HelloWorld2 hh = () -> System.out.println("I *said* Hello!");
 	
 	public static void main(String[] args) {
 
@@ -100,7 +105,7 @@ public class Lambda {
 		//polymorphism; instead of having to subclass, assign code blocks
 		//to different instances, simpler syntax, and spin through a collection
 		//of the same interface, resulting in different behavior
-		hw.sayHello("George");
+		hw.sayHello("George", "_orders_");
 		hs.sayHello("Tim");
 		hh.sayHello();
 
